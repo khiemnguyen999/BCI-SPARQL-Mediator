@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<config xmlns="http://sparql_proxy.pet.cs.nctu.edu.tw/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+
+	<environment>
+		<!-- SPARQL Proxy Server Information -->
+		<BCI_SPARQL_MEDIATOR>
+			<PORT type="xs:integer">8891</PORT>
+			<LOCATION>
+				<BIOMEDICAL_RESOURCE type="xs:string">http://bci.pet.cs.nctu.edu.tw/archive/</BIOMEDICAL_RESOURCE>
+				<CHANNEL_LOCATIONS type="xs:string">http://bci.pet.cs.nctu.edu.tw/archive/</CHANNEL_LOCATIONS>
+				<HEADIT type="xs:string">http://bci.pet.cs.nctu.edu.tw/BCI_Cloud/HeadIT/</HEADIT>
+				<ESS_2 type="xs:string">http://bci.pet.cs.nctu.edu.tw/BCI_Cloud/</ESS_2>
+			</LOCATION>
+			
+		</BCI_SPARQL_MEDIATOR>
+		<!-- Virtuoso Universal Server Information -->
+		<VUS>
+			<URL type="xs:string">jdbc:virtuoso://localhost</URL>
+			<PORT type="xs:integer">1111</PORT>
+			<ACCOUNT type="xs:string">dba</ACCOUNT>
+			<PASSWORD type="xs:string">dba</PASSWORD>
+			<!-- <PASSWORD type="xs:string">pet97x2z</PASSWORD>  -->
+		</VUS>
+		
+		<DEBUG>
+				<SPARQL-query-file active="1" filename="C:\\querySearch.txt" />
+		</DEBUG>
+		
+		<SPARQL-Federated-Query>
+  			<SPARQL-endpoint id="1" active="1" location="local" service="http://localhost:8890/sparql" />
+  			<SPARQL-endpoint id="2" active="0" location="remote" silent="0" service="http://140.113.216.22:8890/sparql" />
+  			<SPARQL-endpoint id="3" active="0" location="remote" silent="0" service="http://140.113.216.24:8890/sparql" />
+		</SPARQL-Federated-Query>
+	</environment>
+</config>

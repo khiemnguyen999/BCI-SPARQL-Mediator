@@ -1,0 +1,432 @@
+<?xml version="1.0"?>
+
+<transfer xmlns="http://sparql_proxy.pet.cs.nctu.edu.tw/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+
+	<setting>
+	<OPERATION type="xs:string">operation</OPERATION>
+	<RESULT type="xs:string">result</RESULT>
+	<SUCCESSFULLY type="xs:string">Successfully</SUCCESSFULLY>
+	<FAILED type="xs:string">Failed</FAILED>
+	</setting>
+
+	<!--
+	SPARQL Command is composed by a hexadecimal 12345678
+		1    represents Operation
+				(0=EXIT, 1=QUERY, 2=UPDATE, 3= DESCRIBE) 
+		23   represents BCI type
+				 (0=ALL, 1=EEG, 2=MOTION_CAPTURE, 3=EYEGAZE, 4=HANDGESTURE,5=KEYBOARD_HIT,
+				 6=MOUSE_CLICK)// add more type eyegaze,...
+		45   represents Ontology Class
+				(0=ALL, 1=STUDY, 2=SESSION, 3=RECORD, 4=SUBJECT, 5=RECORDED_SUBJECT_AT_SESSION,
+				 6=DEVICE, 7=RECORDED_MODALITY, 8=BIOMEDICAL_RESOURCE, 9=CHANNEL_LOCATIONS,10=CHANNEL)
+		678  represents Attributes
+				(0=ALL, 1 GENERAL FFF=ESS_XML)
+		For Example:
+		00000000 ==> Exit
+		10001000 ==> Query study
+		10002001 ==> Query session task label
+		20103000 ==> Update EEG record
+		
+	
+	-->
+	
+	<operation>
+		<!-- SPARQL Operation: 0 -->
+		<EXIT type="xs:hexBinary">00000000</EXIT>
+		
+		<!-- SPARQL Operation: 1 -->
+		
+			 
+		<QUERY>
+			<MODE>
+			    <TYPE type="xs:string">type</TYPE>
+			    <VALUE type="xs:string">1</VALUE>
+			    <ID type="xs:string">2</ID>
+			</MODE>
+			<FUNCTION>
+			    <FIELDS type="xs:string">fields</FIELDS>
+			    <EXISTS type="xs:string">exists</EXISTS>
+			    <NOT_EXISTS type="xs:string">not_exists</NOT_EXISTS>
+			</FUNCTION>>
+			<ALL>
+				<ALL>
+					<ALL type="xs:hexBinary">10000000</ALL>
+				</ALL>
+			    <STUDY>
+				    <ALL type="xs:hexBinary">10001000</ALL>
+			    </STUDY>
+				<SESSION>
+				    <ALL type="xs:hexBinary">10002000</ALL>
+				    <TASK_LABEL type="xs:hexBinary">10002001</TASK_LABEL>
+				    <PURPOSE type="xs:hexBinary">10002002</PURPOSE>
+				</SESSION>
+				<SUBJECT>
+				    <ALL type="xs:hexBinary">10004000</ALL>
+				    <GENDER type="xs:hexBinary">10004001</GENDER>
+				    <HANDEDNESS type="xs:hexBinary">10004002</HANDEDNESS>
+				</SUBJECT>
+				<RECORDED_SUBJECT_AT_SESSION>
+				    <ALL type="xs:hexBinary">10005000</ALL>
+				    <GROUP type="xs:hexBinary">10005001</GROUP>
+				    <CHANNEL_LOCATION_TYPE type="xs:hexBinary">10005002</CHANNEL_LOCATION_TYPE>
+				</RECORDED_SUBJECT_AT_SESSION>
+				<RECORDED_MODALITY>
+				    <ALL type="xs:hexBinary">10007000</ALL>
+				    <MODALITY_TYPE type="xs:hexBinary">10007001</MODALITY_TYPE>
+				</RECORDED_MODALITY>
+				<BIOMEDICAL_RESOURCE>
+			    	<ALL type="xs:hexBinary">10008000</ALL>
+				</BIOMEDICAL_RESOURCE>
+				<CHANNEL_LOCATIONS>
+			    	<ALL type="xs:hexBinary">10009000</ALL>
+				<EEG>
+			    <RECORD>
+			    	<ALL type="xs:hexBinary">10103000</ALL>
+			    </RECORD>
+				<DEVICE>
+			    	<ALL type="xs:hexBinary">10106000</ALL>
+				</DEVICE>
+			</EEG></CHANNEL_LOCATIONS>
+			</ALL>
+			
+			<MOTION_CAPTURE>
+			    <RECORD>
+			    	<ALL type="xs:hexBinary">10203000</ALL>
+			    </RECORD>
+				<DEVICE>
+			    	<ALL type="xs:hexBinary">10206000</ALL>
+				</DEVICE>
+			</MOTION_CAPTURE>
+		</QUERY>
+		
+		<!-- SPARQL Operation: 2 -->
+		<UPDATE>
+		    <ALL>
+				<STUDY type="xs:hexBinary">20001000</STUDY>
+				<SESSION type="xs:hexBinary">20002000</SESSION>
+				<SUBJECT type="xs:hexBinary">20004000</SUBJECT>
+				<RECORDED_SUBJECT_AT_SESSION type="xs:hexBinary">20005000</RECORDED_SUBJECT_AT_SESSION>
+				<RECORDED_PARAMETER_SET type="xs:hexBinary">2000A000</RECORDED_PARAMETER_SET>
+				<RECORDED_MODALITY type="xs:hexBinary">20007000</RECORDED_MODALITY>
+				<BIOMEDICAL_RESOURCE type="xs:hexBinary">20008000</BIOMEDICAL_RESOURCE>
+				<GENERAL_BIOMEDICAL_RESOURCE type="xs:hexBinary">20008100</GENERAL_BIOMEDICAL_RESOURCE>
+				<CHANNEL_LOCATIONS type="xs:hexBinary">20009000</CHANNEL_LOCATIONS>
+				<EVENT_INSTANCE_FILE type="xs:hexBinary">2000B000</EVENT_INSTANCE_FILE>
+				<ESS_1 type="xs:hexBinary">20000001</ESS_1>
+				<ESS_2 type="xs:hexBinary">20000002</ESS_2>
+		    </ALL>
+		    <EEG>
+			    <RECORD type="xs:hexBinary">20103000</RECORD>
+			    <DEVICE type="xs:hexBinary">20106000</DEVICE>
+		    </EEG>
+		   
+		    <EYE_GAZE>
+		        
+		        <CHANNEL type="xs:hexBinary">20310000</CHANNEL>
+		        <RECORD type="xs:hexBinary">20303000</RECORD>
+			    <DEVICE type="xs:hexBinary">20306000</DEVICE>
+			    
+		    </EYE_GAZE>
+		    
+		    <HAND_GESTURE>
+		        <CHANNEL type="xs:hexBinary">20410000</CHANNEL>
+		        <RECORD type="xs:hexBinary">20403000</RECORD>
+			    <DEVICE type="xs:hexBinary">20406000</DEVICE>
+		    </HAND_GESTURE>
+		    
+		    <KEYBOARD_HIT>
+		        <RECORD type="xs:hexBinary">20503000</RECORD>
+			    <DEVICE type="xs:hexBinary">20506000</DEVICE>
+		    </KEYBOARD_HIT>
+		    
+		    <MOUSE_CLICK>
+		        <CHANNEL type="xs:hexBinary">20610000</CHANNEL>
+		        <RECORD type="xs:hexBinary">20603000</RECORD>
+		        <DEVICE type="xs:hexBinary">20606000</DEVICE>
+		    </MOUSE_CLICK>
+		        
+		    
+		    <MOTION_CAPTURE>
+			    <RECORD type="xs:hexBinary">20203000</RECORD>
+			    <DEVICE type="xs:hexBinary">20206000</DEVICE>
+		    </MOTION_CAPTURE>
+		    
+		    <DESCRIBE>
+		        <ALL type="xs:hexBinary">30000000</ALL> 
+		    </DESCRIBE>
+		</UPDATE>
+
+	</operation>
+	<!-- 
+		Naming: [Class Name]_[Property]
+		If we don't have [Class Name], we will get the wrong results when we transfer between two classes with the same [Property]
+	-->
+	<data>
+	    <ALL>
+	        <ANYID>
+	            <ID type="xs:string">ID</ID>
+	        </ANYID>
+	        
+			<STUDY _="study">
+				<ID type="xs:string">study_id</ID>
+				<TITLE type="xs:string">study_title</TITLE>
+				<PURPOSE type="xs:string">study_purpose</PURPOSE>
+				<UUID type="xs:string">study_uuid</UUID>
+				<ROOT_URI type="xs:string">study_rootUri</ROOT_URI>
+				<START_TIME type="xs:string">study_startTime</START_TIME>
+				<END_TIME type="xs:string">study_endTime</END_TIME>
+			</STUDY>
+			
+			<SESSION _="session">
+				<S type="xs:string">sessions</S>
+				<ID type="xs:string">session_id</ID>
+				<ID_NUMBER type="xs:integer">session_idNumber</ID_NUMBER>
+				<TASK_LABEL type="xs:string">session_taskLabel</TASK_LABEL>
+				<LAB_ID type="xs:string">session_labId</LAB_ID>
+				<PURPOSE type="xs:string">session_purpose</PURPOSE>
+				<START_TIME type="xs:string">session_startTime</START_TIME>
+				<END_TIME type="xs:string">session_endTime</END_TIME>
+			</SESSION>
+			
+			<RECORD _="record">
+				<ID type="xs:string">record_id</ID>
+				<NUMBER_OF_CHANNELS type="xs:string">record_numberOfChannels</NUMBER_OF_CHANNELS>
+				<NUMBER_OF_CHANNELS_MIN type="xs:string">record_numberOfChannels_min</NUMBER_OF_CHANNELS_MIN>
+				<NUMBER_OF_CHANNELS_MAX type="xs:string">record_numberOfChannels_max</NUMBER_OF_CHANNELS_MAX>
+				<CHANNEL_FORMAT type="xs:string">record_channelFormat</CHANNEL_FORMAT>
+				<SAMPLING_RATE type="xs:string">record_samplingRate</SAMPLING_RATE>
+				<SAMPLING_RATE_MIN type="xs:string">record_samplingRate_min</SAMPLING_RATE_MIN>
+				<SAMPLING_RATE_MAX type="xs:string">record_samplingRate_max</SAMPLING_RATE_MAX>
+				<START_TIME type="xs:string">record_startTime</START_TIME>
+				<END_TIME type="xs:string">record_endTime</END_TIME>
+			</RECORD>
+			
+			<SUBJECT _="subject">
+				<S type="xs:string">subjects</S>
+				<ID type="xs:string">subject_id</ID>
+				<GENDER type="xs:string">subject_gender</GENDER>
+				<YEAR_OF_BIRTH type="xs:string">subject_yearOfBirth</YEAR_OF_BIRTH>
+				<YEAR_OF_BIRTH_MIN type="xs:string">subject_yearOfBirthMin</YEAR_OF_BIRTH_MIN>
+				<YEAR_OF_BIRTH_MAX type="xs:string">subject_yearOfBirthMax</YEAR_OF_BIRTH_MAX>
+				<HANDEDNESS type="xs:string">subject_handedness</HANDEDNESS>
+			</SUBJECT>
+			<RECORDED_SUBJECT_AT_SESSION _="recorded_subject_at_session">
+				<S type="xs:string">recordedSubjectAtSessions</S>
+				<ID type="xs:string">recordedSubjectAtSession_id</ID>
+				<LAB_ID type="xs:string">recordedSubjectAtSession_labId</LAB_ID>
+				<IN_SESSION_NUMBER type="xs:string">recordedSubjectAtSession_inSessionNumber</IN_SESSION_NUMBER>
+				<GROUP type="xs:string">recordedSubjectAtSession_group</GROUP>
+				<AGE type="xs:string">recordedSubjectAtSession_age</AGE>
+				<AGE_MIN type="xs:string">recordedSubjectAtSession_ageMin</AGE_MIN>
+				<AGE_MAX type="xs:string">recordedSubjectAtSession_ageMax</AGE_MAX>
+				<VISION type="xs:string">recordedSubjectAtSession_vision</VISION>
+				<HEARING type="xs:string">recordedSubjectAtSession_hearing</HEARING>
+				<HEIGHT type="xs:string">recordedSubjectAtSession_height</HEIGHT>
+				<WEIGHT type="xs:string">recordedSubjectAtSession_weight</WEIGHT>
+				<MEDICATION_CAFFEINE type="xs:string">recordedSubjectAtSession_medicationCaffeine</MEDICATION_CAFFEINE>
+				<MEDICATION_ALCOHOL type="xs:string">recordedSubjectAtSession_medicationAlcohol</MEDICATION_ALCOHOL>
+				<CHANNEL_LOCATION_TYPE type="xs:string">recordedSubjectAtSession_channelLocationType</CHANNEL_LOCATION_TYPE>
+			</RECORDED_SUBJECT_AT_SESSION>
+			<RECORDED_PARAMETER_SET>
+				<ID type="xs:string">recordedParameterSet_id</ID>
+			</RECORDED_PARAMETER_SET>
+			<RECORDED_MODALITY _="recorded_modality">
+				<S type="xs:string">recordedModalities</S>
+				<ID type="xs:string">recordedModality_id</ID>
+				<MODALITY_TYPE type="xs:string">recordedModality_modalityType</MODALITY_TYPE>
+				<MODALITY_SIGNAL_TYPE  type="xs:string">recordedModality_modalitySignalType</MODALITY_SIGNAL_TYPE>
+				<SAMPLING_RATE type="xs:string">recordedModality_samplingRate</SAMPLING_RATE>
+				<HARDWARE_MANUFACTURER type="xs:string">recordedModality_hardwareManufacturer</HARDWARE_MANUFACTURER>
+				<START_CHANNEL type="xs:string">recordedModality_startChannel</START_CHANNEL>
+				<END_CHANNEL type="xs:string">recordedModality_endChannel</END_CHANNEL>
+				<REFERENCE_LOCATION type="xs:string">recordedModality_referenceLocation</REFERENCE_LOCATION>
+				<REFERENCE_LABEL type="xs:string">recordedModality_referenceLabel</REFERENCE_LABEL>
+				<CHANNEL_LOCATION_TYPE type="xs:string">recordedModality_channelLocationType</CHANNEL_LOCATION_TYPE>
+				<CHANNEL_LABEL type="xs:string">recordedModality_channelLabel</CHANNEL_LABEL>
+			</RECORDED_MODALITY>
+			<MEASUREMENT_CAPABILITY _="measurement_capability">
+				<ID type="xs:string">measurementCapability_id</ID>
+			</MEASUREMENT_CAPABILITY>
+			<MEASUREMENT_PROPERTY _="measurement_property">
+				<ID type="xs:string">measurementProperty_id</ID>
+				<NUMBER_OF_CHANNELS type="xs:string">measurementProperty_numberOfChannels</NUMBER_OF_CHANNELS>
+				<NUMBER_OF_CHANNELS_MIN type="xs:string">measurementProperty_numberOfChannelsMin</NUMBER_OF_CHANNELS_MIN>
+				<NUMBER_OF_CHANNELS_MAX type="xs:string">measurementProperty_numberOfChannelsMax</NUMBER_OF_CHANNELS_MAX>
+				<SAMPLING_RATE type="xs:string">measurementProperty_samplingRate</SAMPLING_RATE>
+				<SAMPLING_RATE_MIN type="xs:string">measurementProperty_samplingRateMin</SAMPLING_RATE_MIN>
+				<SAMPLING_RATE_MAX type="xs:string">measurementProperty_samplingRateMax</SAMPLING_RATE_MAX>
+				<START_CHANNEL type="xs:string">measurementProperty_startChannel</START_CHANNEL>
+				<END_CHANNEL type="xs:string">measurementProperty_endChannel</END_CHANNEL>
+			</MEASUREMENT_PROPERTY>
+			<BIOMEDICAL_RESOURCE _="biomedical_resource">
+				<S type="xs:string">biomedicalResources</S>
+				<ID type="xs:string">biomedicalResource_id</ID>
+				<TITLE type="xs:string">biomedicalResource_title</TITLE>
+				<NUMBER_OF_CHANNELS type="xs:string">biomedicalResource_numberOfChannels</NUMBER_OF_CHANNELS>
+				<NUMBER_OF_CHANNELS_MIN type="xs:string">biomedicalResource_numberOfChannelsMin</NUMBER_OF_CHANNELS_MIN>
+				<NUMBER_OF_CHANNELS_MAX type="xs:string">biomedicalResource_numberOfChannelsMax</NUMBER_OF_CHANNELS_MAX>
+				<SAMPLING_RATE type="xs:string">biomedicalResource_samplingRate</SAMPLING_RATE>
+				<SAMPLING_RATE_MIN type="xs:string">biomedicalResource_samplingRateMin</SAMPLING_RATE_MIN>
+				<SAMPLING_RATE_MAX type="xs:string">biomedicalResource_samplingRateMax</SAMPLING_RATE_MAX>
+				<UTILIZATION type="xs:string">biomedicalResource_utilization</UTILIZATION>
+				<ACCESS_METHOD _="access_method">
+					<ID type="xs:string">biomedicalResource_accessMethod_id</ID>
+					<URL type="xs:string">biomedicalResource_accessMethod_url</URL>
+				</ACCESS_METHOD>
+			</BIOMEDICAL_RESOURCE>
+			<CHANNEL_LOCATIONS _="channel_locations">
+				<S type="xs:string">channelLocations</S>
+				<ID type="xs:string">channelLocations_id</ID>
+				<TITLE type="xs:string">channelLocations_title</TITLE>
+				<UTILIZATION type="xs:string">channelLocations_utilization</UTILIZATION>
+				<ACCESS_METHOD _="access_method">
+					<ID type="xs:string">channelLocations_accessMethod_id</ID>
+					<URL type="xs:string">channelLocations_accessMethod_url</URL>
+				</ACCESS_METHOD>
+			</CHANNEL_LOCATIONS>
+			<EVENT_INSTANCE_FILE _="event_instance_file">
+				<ID type="xs:string">eventInstanceFile_id</ID>
+				<TITLE type="xs:string">eventInstanceFile_title</TITLE>
+				<UTILIZATION type="xs:string">eventInstanceFile_utilization</UTILIZATION>
+				<ACCESS_METHOD _="access_method">
+					<ID type="xs:string">eventInstanceFile_accessMethod_id</ID>
+					<URL type="xs:string">eventInstanceFile_accessMethod_url</URL>
+				</ACCESS_METHOD>
+			</EVENT_INSTANCE_FILE>
+			<ESS_XML type="xs:string">ess_xml</ESS_XML>
+	    </ALL>
+	    <EEG>
+			<CHANNEL />
+			<RECORD _="record">
+				<S type="xs:string">eeg_records</S>
+				<ID type="xs:string">eeg_record_id</ID>
+				<NUMBER_OF_CHANNELS type="xs:string">eeg_record_numberOfChannels</NUMBER_OF_CHANNELS>
+				<NUMBER_OF_CHANNELS_MIN type="xs:string">eeg_record_numberOfChannelsMin</NUMBER_OF_CHANNELS_MIN>
+				<NUMBER_OF_CHANNELS_MAX type="xs:string">eeg_record_numberOfChannelsMax</NUMBER_OF_CHANNELS_MAX>
+				<SAMPLING_RATE type="xs:string">eeg_record_samplingRate</SAMPLING_RATE>
+				<SAMPLING_RATE_MIN type="xs:string">eeg_record_samplingRateMin</SAMPLING_RATE_MIN>
+				<SAMPLING_RATE_MAX type="xs:string">eeg_record_samplingRateMax</SAMPLING_RATE_MAX>
+				<START_TIME type="xs:string">eeg_record_startTime</START_TIME>
+				<END_TIME type="xs:string">eeg_record_endTime</END_TIME>
+			</RECORD>
+			<DEVICE _="device">
+				<S type="xs:string">eeg_devices</S>
+				<ID type="xs:string">eeg_device_id</ID>
+				<HARDWARE_MANUFACTURER type="xs:string">eeg_device_hardwareManufacturer</HARDWARE_MANUFACTURER>
+			</DEVICE>
+	    </EEG>
+	    
+	    <EYE_GAZE>
+	        <CHANNEL>
+	            <S type="xs:string">eye_gaze_channels</S>
+				<ID type="xs:string">eye_gaze_channel_id</ID>
+	            <TYPE type="xs:string">eye_gaze_channel_type</TYPE>
+	            <REFERTO type="xs:string">eye_gaze_channel_refers_to</REFERTO>
+	            <UNIT type="xs:string">eye_gaze_channel_unit</UNIT>
+	        </CHANNEL>
+	        
+	        <RECORD>
+	            <S type="xs:string">eye_gaze_records</S>
+				<ID type="xs:string">eye_gaze_record_id</ID>
+				<START_TIME type="xs:string">eye_gaze_record_startTime</START_TIME>
+				<END_TIME type="xs:string">eye_gaze_record_startTime</END_TIME>
+				<CHANNEL_FORMAT type="xs:string">eye_gaze_record_channel_format</CHANNEL_FORMAT>
+				<SAMPLING_RATE type="xs:string">eye_gaze_record_samplingRate</SAMPLING_RATE>
+		
+	        </RECORD>
+	        
+	        
+	        <DEVICE>
+	            <S type="xs:string">eye_gaze_devices</S>
+				<ID type="xs:string">eye_gaze_device_id</ID>
+				<HARDWARE_MANUFACTURER type="xs:string">eye_gaze_device_hardwareManufacturer</HARDWARE_MANUFACTURER>
+		    </DEVICE>
+	    </EYE_GAZE>
+		
+	    <HAND_GESTURE>
+	        <CHANNEL>
+	            <S type="xs:string">hand_gesture_channels</S>
+				<ID type="xs:string">hand_gesture_channel_id</ID>
+	            <TYPE type="xs:string">hand_gesture_channel_type</TYPE>
+	            <UNIT type="xs:string">hand_gesture_channel_unit</UNIT>
+	        </CHANNEL>
+	        
+	        <RECORD>
+	            <S type="xs:string">hand_gesture_records</S>
+				<ID type="xs:string">hand_gesture_record_id</ID>
+				<START_TIME type="xs:string">hand_gesture_record_startTime</START_TIME>
+				<END_TIME type="xs:string">hand_gesture_record_endTime</END_TIME>
+				<CHANNEL_FORMAT type="xs:string">hand_gesture_record_channel_format</CHANNEL_FORMAT>
+				<SAMPLING_RATE type="xs:string">hand_gesture_record_samplingRate</SAMPLING_RATE>
+	        </RECORD>
+	        
+	        <DEVICE>
+	            <S type="xs:string">hand_gesture_devices</S>
+				<ID type="xs:string">hand_gesture_device_id</ID>
+				<HARDWARE_MANUFACTURER type="xs:string">hand_gesture_device_hardwareManufacturer</HARDWARE_MANUFACTURER>
+		    </DEVICE>
+	    </HAND_GESTURE>
+	    
+	    <KEYBOARD_HIT>
+	        <CHANNEL />
+	            
+	        <RECORD>
+	            <S type="xs:string">keyboard_hit_records</S>
+				<ID type="xs:string">keyboard_hit_record_id</ID>
+				<START_TIME type="xs:string">keyboard_hit_record_startTime</START_TIME>
+				<END_TIME type="xs:string">keyboard_hit_record_endTime</END_TIME>
+	        </RECORD>
+	        
+	        <DEVICE>
+	            <S type="xs:string">keyboard_hit_devices</S>
+				<ID type="xs:string">keyboard_hit_device_id</ID>
+				<HARDWARE_MANUFACTURER type="xs:string">keyboard_hit_device_hardwareManufacturer</HARDWARE_MANUFACTURER>
+		    </DEVICE>
+	        
+	    </KEYBOARD_HIT>
+	    
+	    <MOUSE_CLICK>
+	        <CHANNEL>
+	            <S type="xs:string">mouse_click_channels</S>
+				<ID type="xs:string">mouse_click_channel_id</ID>
+	            <BUTTON type="xs:string">mouse_click_channel_button</BUTTON>
+	            <TYPE type="xs:string">mouse_click_channel_type</TYPE>
+	        </CHANNEL>
+	        
+	        <RECORD>
+	            <S type="xs:string">mouse_click_records</S>
+				<ID type="xs:string">mouse_click_record_id</ID>
+				<START_TIME type="xs:string">mouse_click_record_startTime</START_TIME>
+				<END_TIME type="xs:string">mouse_click_record_endTime</END_TIME>
+	        </RECORD>
+	        
+	        <DEVICE>
+	            <S type="xs:string">mouse_click_devices</S>
+				<ID type="xs:string">mouse_click_device_id</ID>
+				<HARDWARE_MANUFACTURER type="xs:string">mouse_click_device_hardwareManufacturer</HARDWARE_MANUFACTURER>
+		    </DEVICE>
+	        
+	        
+	    </MOUSE_CLICK>
+	    
+		<MOTION_CAPTURE>
+			<RECORD _="record">
+				<S type="xs:string">motionCapture_records</S>
+				<ID type="xs:string">motionCapture_record_id</ID>
+				<NUMBER_OF_CHANNELS type="xs:string">motionCapture_record_numberOfChannels</NUMBER_OF_CHANNELS>
+				<NUMBER_OF_CHANNELS_MIN type="xs:string">motionCapture_record_numberOfChannelsMin</NUMBER_OF_CHANNELS_MIN>
+				<NUMBER_OF_CHANNELS_MAX type="xs:string">motionCapture_record_numberOfChannelsMax</NUMBER_OF_CHANNELS_MAX>
+				<SAMPLING_RATE type="xs:string">motionCapture_record_samplingRate</SAMPLING_RATE>
+				<SAMPLING_RATE_MIN type="xs:string">motionCapture_record_samplingRateMin</SAMPLING_RATE_MIN>
+				<SAMPLING_RATE_MAX type="xs:string">motionCapture_record_samplingRateMax</SAMPLING_RATE_MAX>
+				<START_TIME type="xs:string">motionCapture_record_startTime</START_TIME>
+				<END_TIME type="xs:string">motionCapture_record_endTime</END_TIME>
+			</RECORD>
+			<DEVICE _="device">
+				<S type="xs:string">motionCapture_devices</S>
+				<ID type="xs:string">motionCapture_device_id</ID>
+			</DEVICE>
+		</MOTION_CAPTURE>
+	</data>
+</transfer>

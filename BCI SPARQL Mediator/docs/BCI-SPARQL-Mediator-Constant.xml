@@ -1,0 +1,557 @@
+<?xml version="1.0"?>
+
+<constant xmlns="http://sparql_proxy.pet.cs.nctu.edu.tw/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+
+	<VERSION type="xs:integer">1</VERSION>
+
+	<DEBUG>
+		<STRING_LENGTH type="xs:integer">60</STRING_LENGTH>
+		<SPARQL_REPOSITORY type="xs:boolean">true</SPARQL_REPOSITORY>
+		<VERSION_CONSTANTS type="xs:boolean">true</VERSION_CONSTANTS>
+		<SPARQL_PROXY_CONSTANTS type="xs:boolean">true</SPARQL_PROXY_CONSTANTS>
+		<SPARQL_SYNTAX_CONSTANTS type="xs:boolean">true</SPARQL_SYNTAX_CONSTANTS>
+		<SPARQL_VARIABLE_CONSTANTS type="xs:boolean">true</SPARQL_VARIABLE_CONSTANTS>
+		<ONTOLOGY_NAMESPACE_CONSTANTS type="xs:boolean">true</ONTOLOGY_NAMESPACE_CONSTANTS>
+		<ONTOLOGY_ID_CONSTANTS type="xs:boolean">true</ONTOLOGY_ID_CONSTANTS>
+		<ONTOLOGY_CLASS_CONSTANTS type="xs:boolean">true</ONTOLOGY_CLASS_CONSTANTS>
+		<ONTOLOGY_PROPERTY_CONSTANTS type="xs:boolean">true</ONTOLOGY_PROPERTY_CONSTANTS>
+		<DATA_RANGE_CONSTANTS type="xs:boolean">true</DATA_RANGE_CONSTANTS>
+		<DISPLAY_CONSTANTS type="xs:boolean">true</DISPLAY_CONSTANTS>
+		<SETTING_TRANSFER_CONSTANTS type="xs:boolean">true</SETTING_TRANSFER_CONSTANTS>
+		<OPERATION_TRANSFER_CONSTANTS type="xs:boolean">true</OPERATION_TRANSFER_CONSTANTS>
+		<DATA_TRANSFER_CONSTANTS type="xs:boolean">true</DATA_TRANSFER_CONSTANTS>
+		<SPARQL_PROXY_CONFIG type="xs:boolean">true</SPARQL_PROXY_CONFIG>
+		<SPARQL_ENDPOINT_CONFIG type="xs:boolean">true</SPARQL_ENDPOINT_CONFIG>
+	</DEBUG>
+
+	<SPARQL>
+		<!-- For SPARQL Syntax -->
+		<syntax>
+			<PREFIX type="xs:string"><![CDATA[PREFIX ]]></PREFIX>
+			<SELECT type="xs:string"><![CDATA[SELECT ]]></SELECT>
+			<DESCRIBE type="xs:string"><![CDATA[DESCRIBE ]]></DESCRIBE>
+			<WHERE type="xs:string"><![CDATA[WHERE ]]></WHERE>
+			<WITH type="xs:string"><![CDATA[WITH ]]></WITH>
+			<INSERT type="xs:string"><![CDATA[INSERT ]]></INSERT>
+			<DELETE type="xs:string"><![CDATA[DELETE ]]></DELETE>
+			<INTO type="xs:string"><![CDATA[INTO ]]></INTO>
+			<GRAPH type="xs:string"><![CDATA[GRAPH ]]></GRAPH>
+			<DISTINCT type="xs:string"><![CDATA[DISTINCT ]]></DISTINCT>
+			<FILTER type="xs:string"><![CDATA[FILTER ]]></FILTER>
+			<OPTIONAL type="xs:string"><![CDATA[OPTIONAL ]]></OPTIONAL>
+			<NOT type="xs:string"><![CDATA[NOT ]]></NOT>
+			<EXISTS type="xs:string"><![CDATA[EXISTS ]]></EXISTS>
+			<UNION type="xs:string"><![CDATA[UNION ]]></UNION>
+			<SERVICE type="xs:string"><![CDATA[SERVICE ]]></SERVICE>
+			<SILENT type="xs:string"><![CDATA[SILENT ]]></SILENT>
+			<REGEX type="xs:string"><![CDATA[regex ]]></REGEX>
+			<A type="xs:string"><![CDATA[a ]]></A>
+			
+			<LEFT_PARENTHESES type="xs:string"><![CDATA[ (]]></LEFT_PARENTHESES>
+			<RIGHT_PARENTHESES type="xs:string"><![CDATA[) ]]></RIGHT_PARENTHESES>
+			<LEFT_BRACE type="xs:string"><![CDATA[ {]]></LEFT_BRACE>
+			<RIGHT_BRACE type="xs:string"><![CDATA[} ]]></RIGHT_BRACE>
+			<LEFT_CHEVRON type="xs:string"><![CDATA[ <]]></LEFT_CHEVRON>
+			<RIGHT_CHEVRON type="xs:string"><![CDATA[> ]]></RIGHT_CHEVRON>
+			<DOUBLE_QUOTE type="xs:string"><![CDATA["]]></DOUBLE_QUOTE>
+			<SLASH type="xs:string"><![CDATA[/]]></SLASH>
+			<UNDERSCORE type="xs:string"><![CDATA[_]]></UNDERSCORE>
+			<COLON type="xs:string"><![CDATA[: ]]></COLON>
+			<COMMA type="xs:string"><![CDATA[, ]]></COMMA>
+			<ASTERISK type="xs:string"><![CDATA[*]]></ASTERISK>
+			<SPACE type="xs:string"><![CDATA[    ]]></SPACE>
+			<NEW_LINE type="xs:string">&#xD;&#xA;</NEW_LINE>
+			<EQUAL type="xs:string"><![CDATA[= ]]></EQUAL>
+			<GREATER_EQUAL_THAN type="xs:string"><![CDATA[>= ]]></GREATER_EQUAL_THAN>
+			<LESS_EQUAL_THAN type="xs:string"><![CDATA[<= ]]></LESS_EQUAL_THAN>
+			<TYPE_CONVERSION type="xs:string"><![CDATA[^^]]></TYPE_CONVERSION>
+			
+			<CONTINUE_TRIPLE type="xs:string"> ; &#xD;&#xA;</CONTINUE_TRIPLE>
+			<END_TRIPLE type="xs:string"> . &#xD;&#xA;</END_TRIPLE>
+		</syntax>
+
+		<!-- For Variable -->
+		<variable xml:space="preserve" _="?">
+			<OFFSET type="xs:integer">1</OFFSET>
+			<ALL>
+				<STUDY _="?study ">
+					<ID type="xs:string">?study_id </ID>
+					<TITLE type="xs:string">?study_title </TITLE>
+					<PURPOSE type="xs:string">?study_purpose </PURPOSE>
+					<UUID type="xs:string">?study_uuid </UUID>
+					<ROOT_URI type="xs:string">?study_rootUri </ROOT_URI>
+					<START_TILE type="xs:string">?study_startTime </START_TILE>
+					<END_TIME type="xs:string">?study_endTime </END_TIME>
+				</STUDY>
+				<SESSION _="?bciSession ">
+					<ID type="xs:string">?session_id </ID>
+					<ID_NUMBER type="xs:string">?session_idNumber </ID_NUMBER>
+					<TASK_LABEL type="xs:string">?session_taskLabel </TASK_LABEL>
+					<PURPOSE type="xs:string">?session_purpose </PURPOSE>
+					<LAB_ID type="xs:string">?session_labId </LAB_ID>
+					<START_TILE type="xs:string">?session_startTime </START_TILE>
+					<END_TIME type="xs:string">?session_endTime </END_TIME>
+				</SESSION>
+				<CHANNEL _="?channel">
+				    <ID type="xs:string">?channel_id </ID>
+				</CHANNEL>
+				    
+				<RECORD _="?record ">
+				    <ID type="xs:string">?record_id </ID>
+				    <NUMBER_OF_CHANNELS type="xs:string">?record_numberOfChannels </NUMBER_OF_CHANNELS>
+				    <CHANNEL_FORMAT type="xs:string">?record_channelFormat </CHANNEL_FORMAT>
+				    <SAMPLING_RATE type="xs:string">?record_samplingRate </SAMPLING_RATE>
+				    <START_TIME type="xs:string">?record_startTime </START_TIME>
+				    <END_TIME type="xs:string">?record_endTime </END_TIME>
+				</RECORD>
+				<SUBJECT _="?subject ">
+					<ID type="xs:string">?subject_id </ID>
+					<GENDER type="xs:string">?subject_gender </GENDER>
+					<YEAR_OF_BIRTH type="xs:string">?subject_yearOfBirth </YEAR_OF_BIRTH>
+					<HANDEDNESS type="xs:string">?subject_handedness </HANDEDNESS>
+				</SUBJECT>
+				<RECORDED_SUBJECT_AT_SESSION _="?recordedSubjectAtSession ">
+					<ID type="xs:string">?recordedSubjectAtSession_id </ID>
+					<LAB_ID type="xs:string">?recordedSubjectAtSession_labId </LAB_ID>
+					<IN_SESSION_NUMBER type="xs:string">?recordedSubjectAtSession_inSessionNumber </IN_SESSION_NUMBER>
+					<GROUP type="xs:string">?recordedSubjectAtSession_group </GROUP>
+					<AGE type="xs:string">?recordedSubjectAtSession_age </AGE>
+					<VISION type="xs:string">?recordedSubjectAtSession_vision </VISION>
+					<HEARING type="xs:string">?recordedSubjectAtSession_hearing </HEARING>
+					<HEIGHT type="xs:string">?recordedSubjectAtSession_height </HEIGHT>
+					<WEIGHT type="xs:string">?recordedSubjectAtSession_weight </WEIGHT>
+					<MEDICATION_CAFFEINE type="xs:string">?recordedSubjectAtSession_medicationCaffeine </MEDICATION_CAFFEINE>
+					<MEDICATION_ALCOHOL type="xs:string">?recordedSubjectAtSession_medicationAlcohol </MEDICATION_ALCOHOL>
+					<CHANNEL_LOCATION_TYPE type="xs:string">?recordedSubjectAtSession_channelLocationType </CHANNEL_LOCATION_TYPE>
+				</RECORDED_SUBJECT_AT_SESSION>
+				<RECORDED_PARAMETER_SET _="?recordedParameterSet ">
+					<ID type="xs:string">?recordedParameterSet_id </ID>
+				</RECORDED_PARAMETER_SET>
+				<RECORDED_MODALITY _="?recordedModality ">
+					<ID type="xs:string">?recordedModality_id </ID>
+					<MODALITY_TYPE type="xs:string">?recordedModality_modalityType </MODALITY_TYPE>
+					<MODALITY_SIGNAL_TYPE type="xs:string">?recordedModality_modalitySignalType </MODALITY_SIGNAL_TYPE>
+					<SAMPLING_RATE type="xs:string">?recordedModality_samplingRate </SAMPLING_RATE>
+					<HARDWARE_MANUFACTURER type="xs:string">?recordedModality_hardwareManufacturer </HARDWARE_MANUFACTURER>
+					<START_CHANNEL type="xs:string">?recordedModality_startChannel </START_CHANNEL>
+					<END_CHANNEL type="xs:string">?recordedModality_endChannel </END_CHANNEL>
+					<REFERENCE_LOCATION type="xs:string">?recordedModality_referenceLocation </REFERENCE_LOCATION>
+					<REFERENCE_LABEL type="xs:string">?recordedModality_referenceLabel </REFERENCE_LABEL>
+				</RECORDED_MODALITY>
+				<DEVICE _="?device ">
+				    <ID type="xs:string">?device_id </ID>
+				</DEVICE>
+				<MEASUREMENT_CAPABILITY _="?measurementCapability ">
+					<ID type="xs:string">?measurementCapability_id </ID>
+				</MEASUREMENT_CAPABILITY>
+				<MEASUREMENT_PROPERTY _="?measurementProperty ">
+					<ID type="xs:string">?measurementProperty_id </ID>
+					<NUMBER_OF_CHANNELS type="xs:integer">?measurementProperty_numberOfChannels </NUMBER_OF_CHANNELS>
+					<SAMPLING_RATE type="xs:integer">?measurementProperty_samplingRate </SAMPLING_RATE>
+					<START_CHANNEL type="xs:integer">?measurementProperty_startChannel </START_CHANNEL>
+					<END_CHANNEL type="xs:integer">?measurementProperty_endChannel </END_CHANNEL>
+				</MEASUREMENT_PROPERTY>
+				<BIOMEDICAL_RESOURCE _="?biomedicalResource ">
+				    <ID type="xs:string">?biomedicalResource_id </ID>
+				    <TITLE type="xs:string">?biomedicalResource_title </TITLE>
+				    <NUMBER_OF_CHANNELS type="xs:string">?biomedicalResource_numberOfChannels </NUMBER_OF_CHANNELS>
+				    <SAMPLING_RATE> type="xs:string">?biomedicalResource_samplingRate </SAMPLING_RATE>
+				    <UTILIZATION type="xs:string">?biomedicalResource_utilization </UTILIZATION>
+				    <ACCESS_METHOD _="?biomedicalResource_accessMethod ">
+				        <ID type="xs:string">?biomedicalResource_accessMethod_id </ID>
+				        <URL type="xs:string">?biomedicalResource_accessMethod_url </URL>
+				    </ACCESS_METHOD>
+				</BIOMEDICAL_RESOURCE>
+				<CHANNEL_LOCATIONS _="?channelLocations ">
+				    <ID type="xs:string">?channelLocations_id </ID>
+				    <TITLE type="xs:string">?channelLocations_title </TITLE>
+				    <UTILIZATION type="xs:string">?channelLocations_utilization </UTILIZATION>
+				    <ACCESS_METHOD _="?channelLocations_accessMethod ">
+				        <ID type="xs:string">?channelLocations_accessMethod_id </ID>
+				        <URL type="xs:string">?channelLocations_accessMethod_url </URL>
+				    </ACCESS_METHOD>
+				</CHANNEL_LOCATIONS>
+				<EVENT_INSTANCE_FILE _="?eventInstanceFile ">
+				    <ID type="xs:string">?eventInstanceFile_id </ID>
+				    <TITLE type="xs:string">?eventInstanceFile_title </TITLE>
+				    <UTILIZATION type="xs:string">?eventInstanceFile_utilization </UTILIZATION>
+				    <ACCESS_METHOD _="?eventInstanceFile_accessMethod ">
+				        <ID type="xs:string">?eventInstanceFile_accessMethod_id </ID>
+				        <URL type="xs:string">?eventInstanceFile_accessMethod_url </URL>
+				    </ACCESS_METHOD>
+				</EVENT_INSTANCE_FILE>
+			</ALL>
+			<EEG>
+				<RECORD _="?record ">
+					<ID type="xs:string">?eeg_record_id </ID>
+					<NUMBER_OF_CHANNELS type="xs:string">?eeg_record_numberOfChannels </NUMBER_OF_CHANNELS>
+					<SAMPLING_RATE type="xs:string">?eeg_record_samplingRate </SAMPLING_RATE>
+					<START_TIME type="xs:string">?eeg_record_startTime </START_TIME>
+					<END_TIME type="xs:string">?eeg_record_endTime </END_TIME>
+				</RECORD>
+				<DEVICE _="?device ">
+					<ID type="xs:string">?eeg_device_id </ID>
+				</DEVICE>
+			</EEG>
+			
+			<EYE_GAZE>
+			    <CHANNEL _="?channel">
+			        <ID type="xs:string">?eye_gaze_channel_id </ID>
+			        <TYPE type="xs:string">?eye_gaze_channel_type</TYPE>
+	            	<REFERTO type="xs:string">?eye_gaze_channel_refers_to</REFERTO>
+	            	<UNIT type="xs:string">?eye_gaze_channel_unit</UNIT>
+			    </CHANNEL>
+
+			    <RECORD _="?record">
+					<ID type="xs:string">?eye_gaze_record_id</ID>
+					<START_TIME type="xs:string">?eye_gaze_record_startTime</START_TIME>
+					<END_TIME type="xs:string">?eye_gaze_record_endTime</END_TIME>
+					<CHANNEL_FORMAT type="xs:string">?eye_gaze_record_channel_format</CHANNEL_FORMAT>
+					<SAMPLING_RATE type="xs:string">?eye_gaze_record_samplingRate </SAMPLING_RATE>
+			    </RECORD>
+			    
+			    <DEVICE _="?device ">
+					<ID type="xs:string">?eye_gaze_device_id </ID>
+				</DEVICE>
+			    
+			</EYE_GAZE>
+			
+			<HAND_GESTURE>
+			     <CHANNEL _="?channel">
+			        <ID type="xs:string">?hand_gesture_channel_id</ID> 
+			        <TYPE type="xs:string">?hand_gesture_channel_type</TYPE>
+	            	<UNIT type="xs:string">?hand_gesture_channel_unit</UNIT>
+			    </CHANNEL>
+
+			    <RECORD _="?record">
+					<ID type="xs:string">?hand_gesture_record_id</ID>
+					<START_TIME type="xs:string">?hand_gesture_record_startTime</START_TIME>
+					<END_TIME type="xs:string">?hand_gesture_record_endTime</END_TIME>
+					<CHANNEL_FORMAT type="xs:string">?hand_gesture_record_channel_format</CHANNEL_FORMAT>
+					<SAMPLING_RATE type="xs:string">?hand_gesture_record_samplingRate </SAMPLING_RATE>  
+			    </RECORD>
+			    
+			    <DEVICE _="?device ">
+					<ID type="xs:string">?hand_gesture_device_id </ID>
+				</DEVICE>
+			    
+			</HAND_GESTURE>
+			
+			<KEYBOARD_HIT>
+			    <CHANNEL />
+			  
+
+			    <RECORD _="?record">
+					<ID type="xs:string">?keyboard_hit_record_id</ID>
+					<START_TIME type="xs:string">?keyboard_hit_record_startTime</START_TIME>
+					<END_TIME type="xs:string">?keyboard_hit_record_endTime</END_TIME>  
+			    </RECORD>
+			    
+			    <DEVICE _="?device ">
+					<ID type="xs:string">?keyboard_hit_device_id </ID>
+				</DEVICE>
+			    
+			</KEYBOARD_HIT>
+			
+			<MOUSE_CLICK>
+		    	<CHANNEL _="?channel">
+		    	    <ID type="xs:string">?mouse_click_channel_id</ID>
+			        <TYPE type="xs:string">?mouse_click_channel_type</TYPE>
+	            	<BUTTON type="xs:string">?mouse_click_channel_button</BUTTON>
+			    </CHANNEL>
+
+			    <RECORD _="?record">
+					<ID type="xs:string">?mouse_click_record_id</ID>
+					<START_TIME type="xs:string">?mouse_click_record_startTime</START_TIME>
+					<END_TIME type="xs:string">?mouse_click_record_endTime</END_TIME>  
+			    </RECORD>
+			    
+			    <DEVICE _="?device ">
+					<ID type="xs:string">?mouse_click_device_id </ID>
+				</DEVICE>
+		    
+		</MOUSE_CLICK>
+			
+			
+			<MOTION_CAPTURE>
+				<RECORD _="?record ">
+					<ID type="xs:string">?motionCapture_record_id </ID>
+					<START_TIME type="xs:string">?motionCapture_record_startTime </START_TIME>
+					<END_TIME type="xs:string">?motionCapture_record_endTime </END_TIME>
+				</RECORD>
+				<DEVICE _="?device ">
+					<ID type="xs:string">?motionCapture_device_id </ID>
+				</DEVICE>
+			</MOTION_CAPTURE>
+		</variable>
+	</SPARQL>
+	
+	<ontology>
+		<!-- For namespaces -->
+		<namespace xml:space="preserve">
+			<BCI>
+				<NAMESPACE type="xs:string">bci: </NAMESPACE>
+				<URI type="xs:string">http://bci.pet.cs.nctu.edu.tw/ontology#</URI>
+				<GRAPH type="xs:string"><![CDATA[ <http://bci.pet.cs.nctu.edu.tw/ontology#> ]]></GRAPH>
+				<PREFIX type="xs:string"><![CDATA[PREFIX bci:  <http://bci.pet.cs.nctu.edu.tw/ontology#> ]]></PREFIX>
+			</BCI>
+			<SSN>
+				<NAMESPACE type="xs:string">ssn: </NAMESPACE>
+				<URI type="xs:string">http://purl.oclc.org/NET/ssnx/ssn#</URI>
+				<GRAPH type="xs:string"><![CDATA[ <http://purl.oclc.org/NET/ssnx/ssn#> ]]></GRAPH>
+				<PREFIX type="xs:string"><![CDATA[PREFIX ssn:  <http://purl.oclc.org/NET/ssnx/ssn#> ]]></PREFIX>
+			</SSN>
+			<XSD>
+				<NAMESPACE type="xs:string">xsd: </NAMESPACE>
+				<URI type="xs:string">http://www.w3.org/2001/XMLSchema#</URI>
+				<GRAPH type="xs:string"><![CDATA[ <http://www.w3.org/2001/XMLSchema#> ]]></GRAPH>
+				<PREFIX type="xs:string"><![CDATA[PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#> ]]></PREFIX>
+			</XSD>
+			<OWL>
+				<NAMESPACE type="xs:string">owl: </NAMESPACE>
+				<URI type="xs:string">http://www.w3.org/2002/07/owl#</URI>
+				<GRAPH type="xs:string"><![CDATA[ <http://www.w3.org/2002/07/owl#> ]]></GRAPH>
+				<PREFIX type="xs:string"><![CDATA[PREFIX owl:  <http://www.w3.org/2002/07/owl#> ]]></PREFIX>
+			</OWL>
+			<RDF>
+				<NAMESPACE type="xs:string">rdf: </NAMESPACE>
+				<URI type="xs:string">http://www.w3.org/1999/02/22-rdf-syntax-ns#</URI>
+				<GRAPH type="xs:string"><![CDATA[ <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ]]></GRAPH>
+				<PREFIX type="xs:string"><![CDATA[PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ]]></PREFIX>
+			</RDF>
+			<RDFS>
+				<NAMESPACE type="xs:string">rdfs: </NAMESPACE>
+				<URI type="xs:string">http://www.w3.org/2000/01/rdf-schema#</URI>
+				<GRAPH type="xs:string"><![CDATA[ <http://www.w3.org/2000/01/rdf-schema#> ]]></GRAPH>
+				<PREFIX type="xs:string"><![CDATA[PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> ]]></PREFIX>
+			</RDFS>
+			<BCI_STORE>
+			    <GRAPH type="xs:string"><![CDATA[ <http://bci.pet.cs.nctu.edu.tw/bciStore> ]]></GRAPH>
+			</BCI_STORE>
+		</namespace>
+		<!-- For class ID (ontology definition/concept) -->
+		<id>
+			<!-- BCI -->
+			<STUDY type="xs:string">Study</STUDY>
+			<SESSION type="xs:string">Session</SESSION>
+			<EEG_RECORD type="xs:string">EegRecord</EEG_RECORD>
+			
+			<EYE_GAZE_RECORD type="xs:string">EyeGazeRecord</EYE_GAZE_RECORD>
+			<HAND_GESTURE_RECORD type="xs:string">HandGestureRecord</HAND_GESTURE_RECORD>
+			<KEYBOARD_HIT_RECORD type="xs:string">KeyBoardHitRecord</KEYBOARD_HIT_RECORD>
+			<MOUSE_CLICK_RECORD type="xs:string">MouseClickRecord</MOUSE_CLICK_RECORD>
+			
+			<MOTION_CAPTURE_RECORD type="xs:string">MotionCaptureRecord</MOTION_CAPTURE_RECORD>
+			<SUBJECT type="xs:string">Subject</SUBJECT>
+			<RECORDED_SUBJECT_AT_SESSION type="xs:string">RecordedSubjectAtSession</RECORDED_SUBJECT_AT_SESSION>
+			<EEG_DEVICE type="xs:string">EegDevice</EEG_DEVICE>
+			
+			<EYE_GAZE_DEVICE type="xs:string">EyeGazeDevice</EYE_GAZE_DEVICE>
+			<HAND_GESTURE_DEVICE type="xs:string">HandGestureDevice</HAND_GESTURE_DEVICE>
+			<KEYBOARD_HIT_DEVICE type="xs:string">KeyBoardHitDevice</KEYBOARD_HIT_DEVICE>
+			<MOUSE_CLICK_DEVICE type="xs:string">MouseClickDevice</MOUSE_CLICK_DEVICE>
+			
+			<EYE_GAZE_CHANNEL type="xs:string">EyeGazeChannel</EYE_GAZE_CHANNEL>
+			<HAND_GESTURE_CHANNEL type="xs:string">HandGestureChannel</HAND_GESTURE_CHANNEL>
+			<KEYBOARD_HIT_CHANNEL type="xs:string">KeyBoardHitChannel</KEYBOARD_HIT_CHANNEL>
+			<MOUSE_CLICK_CHANNEL type="xs:string">MouseClickChannel</MOUSE_CLICK_CHANNEL>
+			
+			<MOTION_CAPTURE_DEVICE type="xs:string">MotionCaptureDevice</MOTION_CAPTURE_DEVICE>
+			<RECORDED_PARAMETER_SET type="xs:string">RecordedParameterSet</RECORDED_PARAMETER_SET>
+			<RECORDED_MODALITY type="xs:string">RecordedModality</RECORDED_MODALITY>
+			<BIOMEDICAL_RESOURCE type="xs:string">BiomedicalResource</BIOMEDICAL_RESOURCE>
+			<CHANNEL_LOCATIONS type="xs:string">ChannelLocations</CHANNEL_LOCATIONS>
+			<EVENT_INSTANCE_FILE type="xs:string">EventInstanceFile</EVENT_INSTANCE_FILE>
+			<ACCESS_METHOD_HTTP type="xs:string">AccessMethodHttp</ACCESS_METHOD_HTTP>
+			<!-- ssn -->
+			<MEASUREMENT_CAPABILITY type="xs:string">MeasurementCapability</MEASUREMENT_CAPABILITY>
+			<MEASUREMENT_PROPERTY type="xs:string">MeasurementProperty</MEASUREMENT_PROPERTY>
+		</id>
+		<!-- Class -->
+		<class xml:space="preserve">
+			<BCI>
+				<STUDY type="xs:string">bci:Study </STUDY>
+				<SESSION type="xs:string">bci:BciSession </SESSION>
+				
+				<EYE_GAZE_CHANNEL type="xs:string">bci:EyeGazeChannel </EYE_GAZE_CHANNEL>
+				<HAND_GESTURE_CHANNEL type="xs:string">bci:HandGestureChannel </HAND_GESTURE_CHANNEL>
+				<KEYBOARD_HIT_CHANNEL type="xs:string">bci:KeyBoardHitChannel </KEYBOARD_HIT_CHANNEL>
+				<MOUSE_CLICK_CHANNEL type="xs:string">bci:MouseClickChannel </MOUSE_CLICK_CHANNEL>
+				
+				<EEG_RECORD type="xs:string">bci:EegBciRecord </EEG_RECORD>
+				<EYE_GAZE_RECORD type="xs:string">bci:EyeGazeBciRecord </EYE_GAZE_RECORD>
+				<HAND_GESTURE_RECORD type="xs:string">bci:HandGestureBciRecord </HAND_GESTURE_RECORD>
+				<KEYBOARD_HIT_RECORD type="xs:string">bci:KeyBoardHitBciRecord </KEYBOARD_HIT_RECORD>
+				<MOUSE_CLICK_RECORD type="xs:string">bci:MouseClickBciRecord </MOUSE_CLICK_RECORD>
+								
+				<MOTION_CAPTURE_RECORD type="xs:string">bci:MotionCaptureBciRecord </MOTION_CAPTURE_RECORD>
+				<SUBJECT type="xs:string">bci:Subject </SUBJECT>
+				<RECORDED_SUBJECT_AT_SESSION type="xs:string">bci:RecordedSubjectAtSession </RECORDED_SUBJECT_AT_SESSION>
+				<RECORDED_PARAMETER_SET type="xs:string">bci:RecordedParameterSet </RECORDED_PARAMETER_SET>
+				<RECORDED_MODALITY type="xs:string">bci:RecordedModality </RECORDED_MODALITY>
+				
+				<EEG_DEVICE type="xs:string">bci:EegBciDevice </EEG_DEVICE>
+				<EYE_GAZE_DEVICE type="xs:string">bci:EyeGazeBciDevice </EYE_GAZE_DEVICE>
+				<HAND_GESTURE_DEVICE type="xs:string">bci:HandGestureBciDevice </HAND_GESTURE_DEVICE>
+				<KEYBOARD_HIT_DEVICE type="xs:string">bci:KeyBoardHitBciDevice</KEYBOARD_HIT_DEVICE>
+				<MOUSE_CLICK_DEVICE type="xs:string">bci:MouseClickBciDevice</MOUSE_CLICK_DEVICE>
+				
+				<MOTION_CAPTURE_DEVICE type="xs:string">bci:MotionCaptureBciDevice </MOTION_CAPTURE_DEVICE>
+				<RESOURCE type="xs:string">bci:Resource </RESOURCE>
+				<ACCESS_METHOD_HTTP type="xs:string">bci:AccessMethod.HTTP </ACCESS_METHOD_HTTP>
+				<BIOMEDICAL_RESOURCE type="xs:string">bci:BiomedicalResource </BIOMEDICAL_RESOURCE>
+				<MEASUREMENT_PROPERTY type="xs:string">bci:BciMeasurementProperty </MEASUREMENT_PROPERTY>
+			</BCI>
+			<SSN>
+				<MEASUREMENT_CAPABILITY type="xs:string">ssn:MeasurementCapability </MEASUREMENT_CAPABILITY>
+			</SSN>
+			<XSD>
+				<INTEGER type="xs:string">xsd:integer </INTEGER>
+				<STRING type="xs:string">xsd:string </STRING>
+				<FLOAT type="xs:string">xsd:float </FLOAT>
+				<DATE_TIME type="xs:string">xsd:dateTime </DATE_TIME>
+			</XSD>
+		</class>
+		<!-- Property -->
+		<property xml:space="preserve">
+			<BCI>
+			    
+				<HAS_TITLE type="xs:string">bci:hasTitle </HAS_TITLE>
+				<HAS_PURPOSE type="xs:string">bci:hasPurpose </HAS_PURPOSE>
+				<HAS_UUID type="xs:string">bci:hasUUID </HAS_UUID>
+				<HAS_ROOT_URI type="xs:string">bci:hasRootUri </HAS_ROOT_URI>
+				<HAS_START_TIME type="xs:string">bci:hasStartTime </HAS_START_TIME>
+				<HAS_END_TIME type="xs:string">bci:hasEndTime </HAS_END_TIME>
+				<HAS_SESSION type="xs:string">bci:hasBciSession </HAS_SESSION>
+				
+				<HAS_RECORD type="xs:string">bci:hasBciRecord </HAS_RECORD>
+				
+				<HAS_ID_NUMBER type="xs:string">bci:hasIdNumber </HAS_ID_NUMBER>
+				<HAS_TASK_LABEL type="xs:string">bci:hasTaskLabel </HAS_TASK_LABEL>
+				<HAS_SESSION_LAB_ID type="xs:string">bci:hasSessionLabID </HAS_SESSION_LAB_ID>
+				
+				<HAS_EYE_GAZE_CHANNEL_DATA type="xs:string">bci:hasEyeGazeChannelData </HAS_EYE_GAZE_CHANNEL_DATA>
+				<HAS_HAND_GESTURE_CHANNEL_DATA type="xs:string">bci:hasHandGestureChannelData </HAS_HAND_GESTURE_CHANNEL_DATA>
+				<HAS_MOUSE_CLICK_CHANNEL_DATA type="xs:string">bci:hasMouseClickChannelData </HAS_MOUSE_CLICK_CHANNEL_DATA>
+				
+				<HAS_EYE_GAZE_CHANNEL_TYPE type="xs:string">bci:hasEyeGazeChannelType </HAS_EYE_GAZE_CHANNEL_TYPE>
+				<HAS_HAND_GESTURE_CHANNEL_TYPE type="xs:string">bci:hasHandGestureChannelType </HAS_HAND_GESTURE_CHANNEL_TYPE>
+				<HAS_MOUSE_CLICK_CHANNEL_TYPE type="xs:string">bci:hasMouseClickChannelType </HAS_MOUSE_CLICK_CHANNEL_TYPE>
+				
+				<HAS_EYE_GAZE_CHANNEL_UNIT type="xs:string">bci:hasEyeGazeChannelUnit </HAS_EYE_GAZE_CHANNEL_UNIT>
+				<HAS_HAND_GESTURE_CHANNEL_UNIT type="xs:string">bci:hasHandGestureChannelUnit </HAS_HAND_GESTURE_CHANNEL_UNIT>
+				
+				<HAS_EYE_GAZE_CHANNEL_REFERS_TO type="xs:string">bci:hasEyeGazeChannelRefersTo </HAS_EYE_GAZE_CHANNEL_REFERS_TO>
+				<HAS_MOUSE_CLICK_CHANNEL_BUTTON type="xs:string">bci:hasMouseClickChannelButton </HAS_MOUSE_CLICK_CHANNEL_BUTTON>
+				
+				<IS_CHANNEL_OF type="xs:string">bci:isChannelOf </IS_CHANNEL_OF>
+				<IS_EYE_GAZE_CHANNEL_DATA_OF type="xs:string">bci:isEyeGazeChannelDataOf </IS_EYE_GAZE_CHANNEL_DATA_OF>
+				<IS_HAND_GESTURE_CHANNEL_DATA_OF type="xs:string">bci:isHandGestureChannelDataOf </IS_HAND_GESTURE_CHANNEL_DATA_OF>
+				<IS_MOUSE_CLICK_CHANNEL_DATA_OF type="xs:string">bci:isMouseClickChannelDataOf </IS_MOUSE_CLICK_CHANNEL_DATA_OF>
+				
+				<HAS_RECORDED_SPECS_SUBJECT_SESSION type="xs:string">bci:hasRecordedSpecsSubjectSession </HAS_RECORDED_SPECS_SUBJECT_SESSION>
+				<HAS_RECORDED_PARAMETER_SET type="xs:string">bci:hasRecordedParameterSet </HAS_RECORDED_PARAMETER_SET>
+
+				<IS_SESSION_OF type="xs:string">bci:isBciSessionOf </IS_SESSION_OF>
+				<IS_RECORD_OF type="xs:string">bci:isBciRecordOf </IS_RECORD_OF>
+				<IS_BIOMEDICAL_RESOURCE_OF type="xs:string">bci:isBiomedicalResourceOf </IS_BIOMEDICAL_RESOURCE_OF>
+				<IS_FROM_SUBJECT type="xs:string">bci:isFromSubject </IS_FROM_SUBJECT>
+				
+				<IS_USED_FOR_GENERATE_RECORD type="xs:string">bci:isUsedForGenerated </IS_USED_FOR_GENERATE_RECORD>
+				<BCI_IS_GENERATED_BY type="xs:string">bci:isGeneratedBy </BCI_IS_GENERATED_BY>
+				
+				<IS_GENERATED_BY_EEG_DEVICE type="xs:string">bci:isGeneratedByEegBciDevice </IS_GENERATED_BY_EEG_DEVICE>
+				
+				<IS_GENERATED_BY_EYE_GAZE_DEVICE type="xs:string">bci:isGeneratedByEyeGazeBciDevice </IS_GENERATED_BY_EYE_GAZE_DEVICE>
+				<IS_GENERATED_BY_HAND_GESTURE_DEVICE type="xs:string">bci:isGeneratedByHandGestureBciDevice </IS_GENERATED_BY_HAND_GESTURE_DEVICE>
+				<IS_GENERATED_BY_KEYBOARD_HIT_DEVICE type="xs:string">bci:isGeneratedByKeyboarHitBciDevice </IS_GENERATED_BY_KEYBOARD_HIT_DEVICE>
+				<IS_GENERATED_BY_MOUSE_CLICK_DEVICE type="xs:string">bci:isGeneratedByMouseClickBciDevice </IS_GENERATED_BY_MOUSE_CLICK_DEVICE>
+				
+				<IS_GENERATED_BY_MOTION_CAPTURE_DEVICE type="xs:string">bci:isGeneratedByMotionCaptureBciDevice </IS_GENERATED_BY_MOTION_CAPTURE_DEVICE>
+				<HAS_RECORDED_MODALITY type="xs:string">bci:hasRecordedModality </HAS_RECORDED_MODALITY>
+
+				<HAS_DATA_SET type="xs:string">bci:hasDataSet </HAS_DATA_SET>
+				<HAS_GENDER type="xs:string">bci:hasGender </HAS_GENDER>
+				<HAS_YEAR_OF_BIRTH type="xs:string">bci:hasYearOfBirth </HAS_YEAR_OF_BIRTH>
+				<HAS_HANDEDNESS type="xs:string">bci:hasHandedness </HAS_HANDEDNESS>
+
+				<HAS_LAB_ID type="xs:string">bci:hasLabID </HAS_LAB_ID>
+				<HAS_IN_SESSION_NUMBER type="xs:string">bci:hasInSessionNumber </HAS_IN_SESSION_NUMBER>
+				<HAS_GROUP type="xs:string">bci:hasSessionGroup </HAS_GROUP>
+				<HAS_AGE type="xs:string">bci:hasAge </HAS_AGE>
+				<HAS_VISION type="xs:string">bci:hasVision </HAS_VISION>
+				<HAS_HEARING type="xs:string">bci:hasHearing </HAS_HEARING>
+				<HAS_HEIGHT type="xs:string">bci:hasHeight </HAS_HEIGHT>
+				<HAS_WEIGHT type="xs:string">bci:hasWeight </HAS_WEIGHT>
+				<HAS_MEDICATION_CAFFEINE type="xs:string">bci:hasMedicationCaffeine </HAS_MEDICATION_CAFFEINE>
+				<HAS_MEDICATION_ALCOHOL type="xs:string">bci:hasMedicationAlcohol </HAS_MEDICATION_ALCOHOL>
+				<HAS_CHANNEL_LOCATION_TYPE type="xs:string">bci:hasChannelLocationType </HAS_CHANNEL_LOCATION_TYPE>
+				<HAS_EEG_CHANNEL_LOCATION_TYPE type="xs:string">bci:hasEegChannel.LocationType </HAS_EEG_CHANNEL_LOCATION_TYPE>
+				<HAS_RESOURCE type="xs:string">bci:hasResource </HAS_RESOURCE>
+				<HAS_BIOMEDICAL_RESOURCE type="xs:string">bci:hasBiomedicalResource </HAS_BIOMEDICAL_RESOURCE>
+				
+				<IS_USED_FOR_GENERATE_EEG_RECORD type="xs:string">bci:isUsedForGenerateEegBciRecord </IS_USED_FOR_GENERATE_EEG_RECORD>
+				<IS_USED_FOR_GENERATE_EYE_GAZE_RECORD type="xs:string">bci:isUsedForGenerateEyeGazeBciRecord </IS_USED_FOR_GENERATE_EYE_GAZE_RECORD>
+				<IS_USED_FOR_GENERATE_HAND_GESTURE type="xs:string">bci:isUsedForGenerateHandGestureBciRecord </IS_USED_FOR_GENERATE_HAND_GESTURE>    
+				<IS_USED_FOR_GENERATE_KEYBOARD_HIT type="xs:string">bci:isUsedForGenerateKeyboardHitBciRecord </IS_USED_FOR_GENERATE_KEYBOARD_HIT>
+				<IS_USED_FOR_GENERATE_MOUSE_CLICK type="xs:string">bci:isUsedForGenerateMouseClickBciRecord </IS_USED_FOR_GENERATE_MOUSE_CLICK>
+				
+				<IS_USED_FOR_GENERATE_MOTION_CAPTURE_RECORD type="xs:string">bci:isUsedForGenerateMotionCaptureBciRecord </IS_USED_FOR_GENERATE_MOTION_CAPTURE_RECORD>
+				<HAS_NUMBER_OF_CHANNELS type="xs:string">bci:hasNumberOfChannels </HAS_NUMBER_OF_CHANNELS>
+				<HAS_CHANNEL_FORMAT type="xs:string">bci:hasChannelFormat</HAS_CHANNEL_FORMAT>
+				
+				<HAS_SAMPLING_RATE type="xs:string">bci:hasSamplingRate </HAS_SAMPLING_RATE>
+				
+				<HAS_MODALITY_TYPE type="xs:string">bci:hasModalityType </HAS_MODALITY_TYPE>
+				<HAS_MODALITY_SIGNAL_TYPE type="xs:string">bci:hasModalitySignalType </HAS_MODALITY_SIGNAL_TYPE>
+				
+				<HAS_HARDWARE_MANUFACTURER type="xs:string">bci:hasHardware.Manufacturer </HAS_HARDWARE_MANUFACTURER>
+				<HAS_START_CHANNEL type="xs:string">bci:hasStartChannel </HAS_START_CHANNEL>
+				<HAS_END_CHANNEL type="xs:string">bci:hasEndChannel </HAS_END_CHANNEL>
+				<HAS_REFERENCE_LOCATION type="xs:string">bci:hasReference.Location </HAS_REFERENCE_LOCATION>
+				<HAS_REFERENCE_LABEL type="xs:string">bci:hasReference.Label </HAS_REFERENCE_LABEL>
+
+
+				<IS_USED_FOR type="xs:string">bci:isUsedFor </IS_USED_FOR>
+				<HAS_ACCESS_METHOD type="xs:string">bci:hasAccessMethod </HAS_ACCESS_METHOD>
+
+				<HAS_URL type="xs:string">bci:hasURL </HAS_URL>
+
+			</BCI>
+			<SSN>
+				<HAS_MEASUREMENT_CAPABILITY type="xs:string">ssn:hasMeasurementCapability </HAS_MEASUREMENT_CAPABILITY>
+				<HAS_MEASUREMENT_PROPERTY type="xs:string">ssn:hasMeasurementProperty </HAS_MEASUREMENT_PROPERTY>
+			</SSN>
+			<OWL>
+			    <ONE_OF type="xs:string">owl:oneOf </ONE_OF>
+			</OWL>
+			<RDF>
+			    <FIRST type="xs:string">rdf:first </FIRST>
+			    <REST type="xs:string">rdf:rest </REST>
+			</RDF>
+			<RDFS>
+			    <RANGE type="xs:string">rdfs:range </RANGE>
+			</RDFS>
+		</property>
+		<!-- For Data Range (CONST) -->
+		<dataRange xml:space="preserve">
+			<single>
+				<NA type="xs:string">N/A</NA>
+			</single>
+			<array>
+				<RESOURCE>
+					<UTILIZATION>
+						<i type="xs:string">Experiment note</i>
+						<i type="xs:string">Descriptive metadata</i>
+						<i type="xs:string">Annotation</i>
+						<i type="xs:string">Raw data</i>
+						<i type="xs:string">Channel locations</i>
+						<i type="xs:string">Event instance</i>
+					</UTILIZATION>
+				</RESOURCE>
+			</array>
+		</dataRange>
+	</ontology>
+
+</constant>
